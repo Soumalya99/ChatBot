@@ -1,12 +1,121 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# 🤖 ChatBot&nbsp;· React × Gemini API  
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE) 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/______YOUR_BADGE_ID______/deploy-status)](https://app.netlify.com/sites/YOUR_NETLIFY_SITE/overview)
 
-Currently, two official plugins are available:
+> AI-powered conversational assistant built with **React 19**, **Vite**, **Tailwind CSS** and Google’s **Gemini 2.0 Flash** large-language model.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+<img src="docs/screenshot.gif" alt="ChatBot demo GIF" width="800"/>
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## ✨ Features
+| Category | Details |
+| -------- | ------- |
+| ⚡ **Real-time chat** | Type a prompt ➜ instant streaming answer |
+| 🧠 **Gemini-Flash LLM** | Context–aware responses via Google AI Generative Language API |
+| 🎨 **Modern UI**      | Fully responsive, dark-mode friendly, icons (react-icons) |
+| 🛠️ **Config-driven** | `.env` variables for API key & model version |
+| 🚀 **One-click deploy** | Netlify / Vercel build: `vite build` ➜ `dist` |
+| 🧪 **Typed hooks** | Custom React hooks for message state & auto-scroll |
+| 📑 **Markdown output** | Answers rendered with `react-markdown`, syntax-highlighting |
+
+---
+
+## 📂 Tech Stack
+| Layer | Libraries / Tools |
+| ----- | ----------------- |
+| Front-end | React 19, Vite 6, Tailwind CSS 4, React Icons |
+| Networking | Axios |
+| AI Provider | Google Generative Language API – **gemini-2.0-flash** model |
+| Tooling | ESLint, Prettier |
+| Hosting | Netlify (SPA redirect rule included) |
+
+---
+
+## 🚀 Quick Start
+
+```bash
+# 1. Clone
+git clone https://github.com/YOUR_USER/ChatBot.git && cd ChatBot
+
+# 2. Install deps
+npm ci          # or yarn / pnpm
+
+# 3. Configure environment
+cp .env.example .env               # then edit .env
+#   VITE_GEMINI_KEY=your-google-api-key
+#   VITE_GEMINI_URL=https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${VITE_GEMINI_KEY}
+
+# 4. Run in dev mode
+npm run dev
+
+# 5. Build & Preview
+npm run build && npm run preview
+```
+
+---
+
+## 🛠️ Project Structure
+```
+├─ public/                 # static assets
+├─ src/
+│  ├─ components/          # ChatHeader, Chats, ChatForm, TypingIndicator, …
+│  ├─ hooks/               # useChatScroll.tsx, useGemini.ts
+│  ├─ App.jsx
+│  └─ main.jsx
+├─ .env.example
+├─ vite.config.js
+└─ netlify.toml            # build cmd & SPA redirect
+```
+
+---
+
+## 🌐 Deployment (Netlify)
+
+1. Push repository to GitHub.
+2. In Netlify dashboard → “Import from Git”, select repo.
+3. Build command `npm run build`, publish dir `dist`.
+4. Add env-vars `VITE_GEMINI_KEY`, `VITE_GEMINI_URL` under “Site Settings → Environment”.
+5. **Deploy** – first build ~1 min, afterwards every `git push main` auto-deploys.
+
+*(See `netlify.toml` for SPA redirect to `/index.html`.)*
+
+---
+
+## 🧩 API Usage
+
+| Variable | Description |
+| -------- | ----------- |
+| `VITE_GEMINI_KEY` | Your Google AI key (generate at <https://makersuite.google.com/app/apikey>) |
+| `VITE_GEMINI_URL` | Full endpoint containing your key, e.g.<br>`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=$VITE_GEMINI_KEY` |
+
+Requests are JSON:
+```jsonc
+{
+  "contents": [
+    { "parts": [ { "text": "Hello!" } ] }
+  ]
+}
+```
+
+---
+
+## 🤝 Contributing
+
+1. **Fork** the repo & create your branch: `git checkout -b feat/awesome`
+2. Commit changes: `git commit -m "feat: add awesome feature"`
+3. Push branch: `git push origin feat/awesome`
+4. Create a **Pull Request**
+
+Please follow the ESLint/Prettier guidelines – `npm run lint` must pass.
+
+---
+
+## 📜 License
+
+MIT © 2024 [Kurosaki](https://github.com/Soumalya99)
+
+---
+
+> Made with ☕ and plenty of API calls
