@@ -1,7 +1,7 @@
 
 # 🤖 ChatBot&nbsp;· React × Gemini API  
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE) 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/______YOUR_BADGE_ID______/deploy-status)](https://app.netlify.com/sites/YOUR_NETLIFY_SITE/overview)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/52ee61ab-d801-4cdf-94a4-8c126d23aafd/deploy-status)](https://app.netlify.com/sites/chatboto/deploys)
 
 > AI-powered conversational assistant built with **React 19**, **Vite**, **Tailwind CSS** and Google’s **Gemini 2.0 Flash** large-language model.
 
@@ -45,7 +45,7 @@ npm ci          # or yarn / pnpm
 # 3. Configure environment
 cp .env.example .env               # then edit .env
 #   VITE_GEMINI_KEY=your-google-api-key
-#   VITE_GEMINI_URL=https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${VITE_GEMINI_KEY}
+#   VITE_GEMINI_URL=https://generativelanguaguagemodel?key=${VITE_GEMINI_KEY}
 
 # 4. Run in dev mode
 npm run dev
@@ -61,7 +61,6 @@ npm run build && npm run preview
 ├─ public/                 # static assets
 ├─ src/
 │  ├─ components/          # ChatHeader, Chats, ChatForm, TypingIndicator, …
-│  ├─ hooks/               # useChatScroll.tsx, useGemini.ts
 │  ├─ App.jsx
 │  └─ main.jsx
 ├─ .env.example
@@ -76,7 +75,7 @@ npm run build && npm run preview
 1. Push repository to GitHub.
 2. In Netlify dashboard → “Import from Git”, select repo.
 3. Build command `npm run build`, publish dir `dist`.
-4. Add env-vars `VITE_GEMINI_KEY`, `VITE_GEMINI_URL` under “Site Settings → Environment”.
+4. Add env-vars `VITE_LLM_KEY`, `VITE_GEMINI_URL` under “Site Settings → Environment”.
 5. **Deploy** – first build ~1 min, afterwards every `git push main` auto-deploys.
 
 *(See `netlify.toml` for SPA redirect to `/index.html`.)*
@@ -87,8 +86,8 @@ npm run build && npm run preview
 
 | Variable | Description |
 | -------- | ----------- |
-| `VITE_GEMINI_KEY` | Your Google AI key (generate at <https://makersuite.google.com/app/apikey>) |
-| `VITE_GEMINI_URL` | Full endpoint containing your key, e.g.<br>`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=$VITE_GEMINI_KEY` |
+| `VITE_LLM_KEY` | Your Google AI key (generate at <https://makersuite.google.com/app/apikey>) |
+| `VITE_LLM_URL` | Full endpoint containing your key, e.g.<br>`https://generativelanguagemodel?key=$VITE_LLM_KEY` |
 
 Requests are JSON:
 ```jsonc
