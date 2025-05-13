@@ -3,6 +3,8 @@ import { FaRegUser } from "react-icons/fa";
 import ChatIcon from './ChatIcon';
 import TypingIndicator from './TypingIndicator';
 import ReactMarkdown from 'react-markdown';
+import { TbRobot } from "react-icons/tb";
+
 
 function Chats({ chatHistory }) {
     const chatBodyRef = useRef();
@@ -19,7 +21,7 @@ function Chats({ chatHistory }) {
             {chatHistory.map((msg, index) =>
                 msg.role === 'model' ? (
                     <div key={index} className="flex items-start pt-2 gap-2">
-                        <ChatIcon />
+                        <TbRobot size={37}/>
                         {msg.message === "loading-response" ? (
                             <TypingIndicator />
                         ) : (

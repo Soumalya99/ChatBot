@@ -1,9 +1,9 @@
 import React from 'react'
-import { SiChatbot } from "react-icons/si";
+import { SiDependabot } from "react-icons/si";
 
 function ChatIcon() {
   return (
-    <SiChatbot size={30}/>
+    <SiDependabot size={32} className='text-yellow-400'/>
   )
 }
 

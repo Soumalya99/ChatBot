@@ -3,11 +3,16 @@ import axios from 'axios';
 import ChatIcon from './components/ChatIcon';
 import Chats from './components/Chats';
 import ChatForm from './components/ChatForm';
+import { FaCommentDots } from "react-icons/fa";
+import { IoIosArrowDropdown } from "react-icons/io";
+
 
 function App() {
   const [chatHistory, setChatHistory] = useState([
     { role: 'model', message: 'Hey buddy 🚀\nHello, how can I help you?' }
   ]);
+
+  const [isOpen, setIsOpen] = useState(false);
 
   /* -------------------------------------------------- *
    * 1️⃣  One stable, memoised function that actually   *
@@ -65,21 +70,51 @@ function App() {
   );
 
   /* ---------------- UI ------------------- */
-  return (
-    <div className="flex justify-center items-center min-h-screen bg-gradient-to-b from-[#F4F0FF] to-[#DACDFF]">
-      <div className="w-[420px] overflow-hidden rounded-[18px] shadow-lg bg-white">
-        <header className="flex items-center justify-between py-5 px-4 bg-blue-400">
+   return (
+    <>
+      {/* Chat window – only visible when isOpen === true */}
+      <div
+        className={`fixed bottom-8 right-3 w-[400px] overflow-hidden rounded-[18px] shadow-lg
+          backdrop-blur-md bg-gray-400
+          transform transition-all duration-300 ease-in-out
+          ${isOpen
+            ? 'opacity-100 translate-y-0 scale-100 pointer-events-auto'
+            : 'opacity-0 translate-y-8 scale-95 pointer-events-none'}
+        `}
+      >
+        <header className="flex items-center justify-between py-4 px-4 bg-blue-700/80">
           <div className="flex items-center gap-2 ms-2">
             <ChatIcon />
             <h2 className="text-xl font-semibold text-white tracking-wide">ChatBot</h2>
           </div>
+
+          {/* Close icon lives in header */}
+          <button
+            onClick={() => setIsOpen(false)}
+            className="text-white hover:text-gray-200 transition"
+            aria-label="Close chat"
+          >
+            <IoIosArrowDropdown size={25} />
+          </button>
         </header>
 
         <Chats chatHistory={chatHistory} />
-
         <ChatForm onSendMessage={handleSendMessage} />
       </div>
-    </div>
+      
+       {/* Toggle button – always visible */}
+       {!isOpen && (
+         <button
+           onClick={() => setIsOpen((prev) => !prev)}
+           className={`fixed bottom-2 ms-2 right-3 p-2.5 rounded-full scale-100
+             bg-violet-700/60 hover:bg-violet-800/70 hover:scale-120 text-white 
+             shadow-lg focus:outline-none transition`}
+           aria-label="Open chat"
+         >
+           <FaCommentDots size={20} />
+         </button>
+       )}
+    </>
   );
 }
 
