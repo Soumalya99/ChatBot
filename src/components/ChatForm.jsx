@@ -13,7 +13,7 @@ function ChatForm({onSendMessage}) {
 
     }
     return (
-        <div className='py-2 px-2 border-t bg-white'>
+        <div className='py-2 px-2 border-t  bg-gradient-to-b from-slate-200/60 to-blue-100/70'>
             <form action="#" className="flex gap-2" onSubmit={handleFormSubmit}>
                 <div className='relative flex-1'>
                     <input
@@ -25,7 +25,7 @@ function ChatForm({onSendMessage}) {
                     />
                     <button
                     type='submit'
-                    className="bg-blue-500 text-white absolute right-2 top-1/2 -translate-y-1/2 rounded-full p-2 hover:bg-blue-600 transition"
+                    className="bg-blue-500 scale-105 hover:scale-95 text-white absolute right-2 top-1/2 -translate-y-1/2 rounded-full p-2 hover:bg-blue-600 transition"
                     >
                         <CiLocationArrow1 />
                     </button>

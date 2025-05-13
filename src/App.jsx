@@ -74,8 +74,8 @@ function App() {
     <>
       {/* Chat window – only visible when isOpen === true */}
       <div
-        className={`fixed bottom-8 right-3 w-[400px] overflow-hidden rounded-[18px] shadow-lg
-          backdrop-blur-md bg-gray-400
+        className={`fixed bottom-12 right-3 w-[90vw] max-w-[420px] max-h-[90vh]
+          flex flex-col overflow-hidden rounded-[18px] shadow-lg bg-white
           transform transition-all duration-300 ease-in-out
           ${isOpen
             ? 'opacity-100 translate-y-0 scale-100 pointer-events-auto'
@@ -106,7 +106,7 @@ function App() {
        {!isOpen && (
          <button
            onClick={() => setIsOpen((prev) => !prev)}
-           className={`fixed bottom-2 ms-2 right-3 p-2.5 rounded-full scale-100
+           className={`fixed bottom-5 ms-2 right-4 p-3 rounded-full scale-100
              bg-violet-700/60 hover:bg-violet-800/70 hover:scale-120 text-white 
              shadow-lg focus:outline-none transition`}
            aria-label="Open chat"

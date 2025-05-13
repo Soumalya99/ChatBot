@@ -17,7 +17,7 @@ function Chats({ chatHistory }) {
 
 
     return (
-        <div ref={chatBodyRef} className="flex flex-col gap-4 p-4 h-[430px] bg-gray-50 overflow-y-auto">
+        <div ref={chatBodyRef} className="flex flex-col gap-4 p-4 h-[430px]  bg-gradient-to-b from-blue-400/70 to-indigo-400/70 overflow-y-auto scrollbar-hide">
             {chatHistory.map((msg, index) =>
                 msg.role === 'model' ? (
                     <div key={index} className="flex items-start pt-2 gap-2">
